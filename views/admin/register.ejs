@@ -1,0 +1,46 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+			<% if(error.length > 0) { %>
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Error!</strong> <%= error %>
+				</div>
+			<% } %>
+			
+			<% if(success_msg.length > 0) { %>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Success!</strong> <%= success_msg %>
+				</div>
+			<% } %>
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Register Please</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" action='/admin/register' method='post'>
+            <fieldset>
+              <div class="form-group">
+                <input class="form-control" placeholder="Name" value="<% if(typeof validated != "undefined"){ %><%= validated.name %><% } %>" name="name" type="text" autofocus>
+              </div>
+							<div class="form-group">
+                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+              </div>
+							<div class="form-group">
+                <input class="form-control" placeholder="Username" name="username" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="pwd" type="password" value="">
+              </div>
+              <!-- Change this to a button or input when using this as a form -->
+              <input type='submit' value="Submit" class="btn btn-lg btn-success btn-block">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

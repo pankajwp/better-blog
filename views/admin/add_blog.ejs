@@ -1,0 +1,79 @@
+<div id="page-wrapper">
+		<div class="row">
+				<div class="col-lg-12">
+						<h1 class="page-header">Add blog</h1>						
+				</div>
+				<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<% if(success_msg.length > 0) { %>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Success!</strong> <%= success_msg %>
+				</div>
+			<% } %>
+			
+			<% if(error_msg.length > 0) { %>
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Error!</strong> <%= error_msg %>
+				</div>
+			<% } %>
+				
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Add Blog
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form role="form" enctype="multipart/form-data" action='/admin/add_blog' method='post'>
+									<div class="form-group">
+										<label>Selects</label>
+										<select name="categoryId" class="form-control" required>
+											<option value=''>-- Select a Category --</option>
+											<% for(category of categories) { %>
+												<option value='<%= category.id %>'><%= category.name %></option>
+											<% } %>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Blog Title</label>
+										<input class="form-control" name='title' placeholder='Blog title' required>
+									</div>
+									<div class="form-group">
+										<label>Blog Banner</label>
+										<input type='file'  accept='.jpg, .png, .jpeg' class="form-control" name='banner' required>
+									</div>
+									<div class="form-group">
+										<label>Blog Tags</label>
+										<input class="form-control" name='tags' placeholder='Tags' value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput"  required>
+									</div>
+									<div class="form-group">
+										<label>Blog description</label>
+										<textarea class="form-control" name='description' placeholder='Blog description' required></textarea>
+									</div>									
+									<button type="submit" class="btn btn-default">Save</button>
+									<!-- <button type="reset" class="btn btn-danger">Reset</button> -->
+								</form>
+							</div>
+							<!-- /.col-lg-12 (nested) -->                               
+						</div>
+						<!-- /.row (nested) -->
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+
+</div>
+<!-- /#page-wrapper -->

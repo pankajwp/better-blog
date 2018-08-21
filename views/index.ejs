@@ -1,0 +1,122 @@
+		<div class="pageheader-content row">
+				<div class="col-full">
+
+						<div class="featured">
+
+								<div class="featured__column featured__column--big">
+										<div class="entry" style="background-image:url('/assets/uploads/<%= setData.fBlogs_big.banner %>');">
+												
+												<div class="entry__content">
+														<span class="entry__category"><a href="javascript:;">Music</a></span>
+
+														<h1><a href="/article/<%= setData.fBlogs_big.slug %>" title=""><%= setData.fBlogs_big.title %></a></h1>
+
+														<div class="entry__info">
+																<a href="javascript:;" class="entry__profile-pic">
+																		<img class="avatar" src="/assets/images/avatars/user-03.jpg" alt="">
+																</a>
+
+																<ul class="entry__meta">
+																		<li><a href="javascript:;"><%= setData.fBlogs_big.user.name %></a></li>
+																		<li><%= setData.moment(setData.fBlogs_big.createdAt).format("LLL") %></li>
+																</ul>
+														</div>
+												</div> <!-- end entry__content -->
+												
+										</div> <!-- end entry -->
+								</div> <!-- end featured__big -->
+
+								<div class="featured__column featured__column--small">
+										<% for(fblog of setData.fBlogs_small) {%>
+										<div class="entry" style="background-image:url('/assets/uploads/<%= fblog.banner %>');">
+												
+												<div class="entry__content">
+														<span class="entry__category"><a href="javascript:;">Management</a></span>
+
+														<h1><a href="/article/<%= fblog.slug %>" title="<%= fblog.title%>"><%= fblog.title%></a></h1>
+
+														<div class="entry__info">
+																<a href="javascript:;" class="entry__profile-pic">
+																		<img class="avatar" src="/assets/images/avatars/user-03.jpg" alt="">
+																</a>
+
+																<ul class="entry__meta">
+																		<li><a href="javascript:;"><%= fblog.user.name %></a></li>
+																		<li><%= setData.moment(fblog.createdAt).format("LL") %></li>
+																</ul>
+														</div>
+												</div> <!-- end entry__content -->
+											
+										</div> <!-- end entry -->
+										<% } %>
+								</div> <!-- end featured__small -->
+						</div> <!-- end featured -->
+
+				</div> <!-- end col-full -->
+		</div> <!-- end pageheader-content row -->
+
+</div> <!-- end s-pageheader -->
+
+
+<!-- s-content
+================================================== -->
+<section class="s-content">
+		
+		<div class="row masonry-wrap">
+				<div class="masonry">
+
+						<div class="grid-sizer"></div>
+						<% for(blog of allBlogs){ %>
+							<article class="masonry__brick entry format-standard" data-aos="fade-up">
+											
+									<div class="entry__thumb">
+										<a href="/article/<%= blog.slug %>" class="entry__thumb-link">
+										<img src="/assets/uploads/<%= blog.banner %>" alt="<%= blog.title %>"></a>
+									</div>
+
+									<div class="entry__text">
+											<div class="entry__header">
+													
+													<div class="entry__date">
+															<a href="javascript:void(0)"><%= setData.moment(blog.createdAt).format("LL") %></a>
+													</div>
+													<h1 class="entry__title"><a href="/article/<%= blog.slug %>"><%= blog.title %></a></h1>
+													
+											</div>
+											<div class="entry__excerpt">
+													<p>
+															<%= blog.description.substr(0, 90) %>
+													</p>
+											</div>
+											<div class="entry__meta">
+												<span class="entry__meta-links">
+													<% blog.tags.map((tag) => { %>
+															<a href='<%= baseUrl %>'><%= tag.name %></a>
+														<% })	%>
+													
+												</span>
+											</div>
+									</div>
+
+							</article> <!-- end article -->
+						<% } %>
+						<!-- end article -->
+
+				</div> <!-- end masonry -->
+		</div> <!-- end masonry-wrap -->
+
+		<div class="row">
+			<div class="col-full">
+				<nav class="pgn">
+					<ul>
+						<li><a class="pgn__prev" href="/">First</a></li>
+						<% for(var i=1; i<=pages; i++) { %>
+							<li><a class="pgn__num <%= (typeof(cpage) !== "undefined" && cpage==i)?"current":"" %>" href="<%= (i== 1)?"/": "/?cpage="+i %>"><%= i %></a></li>
+						<% } %>						
+						<li><a class="pgn__next" href="/?cpage=<%= pages %>">Last</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+</section> <!-- s-content -->

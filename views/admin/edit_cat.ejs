@@ -1,0 +1,64 @@
+<div id="page-wrapper">
+		<div class="row">
+				<div class="col-lg-12">
+						<h1 class="page-header">Edit Category </h1>
+						<ul class="breadcrumb">
+							<li><a href="/admin">Dashboard</a></li>
+							<li><a href="/admin/categories">Categories</a></li>
+							<li class="active">Edit Category</li>
+						</ul>
+				</div>
+				<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<% if(success_msg.length > 0) { %>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Success!</strong> <%= success_msg %>
+				</div>
+			<% } %>
+			
+			<% if(error_msg.length > 0) { %>
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Error!</strong> <%= error_msg %>
+				</div>
+			<% } %>
+			
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Edit category
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form role="form" action='/admin/edit_cat/<%= catData.id %>' method='post'>
+									<div class="form-group">
+										<label>Name</label>
+										<input class="form-control" name='name' value='<%= catData.name %>' placeholder='Category name'>
+										<p class="help-block">Edit category name</p>
+									</div>									
+									<button type="submit" class="btn btn-default">Update</button>
+									<button type="reset" class="btn btn-danger">Reset</button>
+								</form>
+							</div>
+							<!-- /.col-lg-12 (nested) -->                               
+						</div>
+						<!-- /.row (nested) -->
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+
+</div>
+<!-- /#page-wrapper -->
