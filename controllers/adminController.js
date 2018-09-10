@@ -35,7 +35,7 @@ module.exports = function(app){
 	// Connect Flash
 	app.use(flash());
 	
-	app.use('/admin', function(req, res, next){			
+	app.use('/admin', function(req, res, next){	
 			if(req.url !== '/login' && req.url !== '/register')
 			{				
 				if(!req.user){
@@ -65,8 +65,7 @@ module.exports = function(app){
 	
 	app.set('layout', 'admin/layout');
 	
-	app.get('/admin', function(req, res){
-	
+	app.get('/admin', function(req, res){	
 			res.status(200).render('admin/dashboard', {setData:{title:'Dashboard'}});		
 	});
 	

@@ -79,8 +79,8 @@ module.exports = function(app){
 		res.render('about', {setData, layout: 'layout'});
 	});
 	
-	app.get('*',function(req,res){
-	 res.render('404', {setData: {title: '404 Page Not Found'}, layout: 'layout'});
-	});
+	// app.get('*',function(req,res){
+	 // res.render('404', {setData: {title: '404 Page Not Found'}, layout: 'layout'});
+	// });
 	
 };

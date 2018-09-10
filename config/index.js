@@ -41,7 +41,7 @@ const operatorsAliases = {
 
 var connection = new Sequelize(config.dbname, config.uname, config.pwd, {
 									port: '3306',
-									host: 'db4free.net',
+									host: 'localhost',
 									dialect: 'mysql',
 									operatorsAliases:operatorsAliases,
 									timezone: 'Asia/Calcutta',
